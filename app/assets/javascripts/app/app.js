@@ -15,5 +15,5 @@ app.config([
         templateUrl: 'assets/app/receipts/_receipts.html',
         controller: 'ReceiptsController'
       });
-
+    $urlRouterProvider.otherwise('home');
 }])
