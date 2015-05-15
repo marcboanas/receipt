@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Paid</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="receipt in receipts | orderBy: 'amount'">
+          <td>{{ receipt.amount }}</td>
+          <td ng-hide="receipt.paid" ng-click="receiptPaid(receipt)">To be paid</td>
+          <td ng-show="receipt.paid" ng-click="receiptPaid(receipt)">Paid</td>
+          <td><a href="#/receipts/{{$index}}">Show</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4">
+    <form ng-submit="addReceipt()">
+      <div class="form-group">
+        <label for="amountInput">Amount</label>
+        <input type="text" class="form-control" id="amountInput" placeholder="Amount" ng-model="amount">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="paid"> Paid
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
